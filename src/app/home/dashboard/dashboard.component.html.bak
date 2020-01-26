@@ -1,0 +1,229 @@
+<section class="dashboardSection">
+    <div class="rt-container col-sm-12" >
+        <div class="col-rt-12 col-sm-12" *ngIf="priestView">
+            <div class="box-paginacao">
+                <input type="radio" name="input-paginacao" id="paginacao1" checked>
+                <input type="radio" name="input-paginacao" id="paginacao2">
+                <input type="radio" name="input-paginacao" id="paginacao3">
+                <input type="radio" name="input-paginacao" id="paginacao4">
+                <div class="box-vitrines">
+                    <ul>
+                        <div class="vitrine1">
+                            <h2>Select Priest</h2>
+                            <li *ngFor="let cardval of carouselCardVal; let i = index">
+                                <div class="img-wrapper" (click)="type1()">
+                                    <img src={{cardval.priestImage}} alt={{cardval.priestname}}>
+                                    <h2>{{cardval.priestname}}</h2>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                    <div class="btn-paginacao">
+                        <ul>
+                            <li><label for="paginacao1">1</label></li>
+                            <li><label for="paginacao2">2</label></li>
+                            <li><label for="paginacao3">3</label></li>
+                            <li><label for="paginacao4">4</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12" *ngIf="priestDetails">
+
+        <ejs-accordion #accordion (created)='acrdnCreated()'>
+            <e-accordionitems>
+                <e-accordionitem expanded='true' header='Event Details Here'>
+                    <ng-template #content>
+                        <div id="Sign_In_Form" style="padding: 3px 0">
+                            <form id="formId">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <ejs-dropdownlist id='ddlelement' #samples [dataSource]='eventTypeData' [fields]='eventTypeFields' [placeholder]='eventTypeText'></ejs-dropdownlist>
+                                            <br>
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-6">
+                                                    <ejs-datepicker id="DatePick"></ejs-datepicker> &nbsp;
+                                                    <ejs-timepicker id="TimePick"></ejs-timepicker> &nbsp;
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <span id="selectedVal" style="text-align:center;font-size: 16px;font-weight: 800;"></span>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <span id="selected" style="text-align:center;font-size: 15px;"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ejs-dropdownlist id='ddlelement' #samplesNew [dataSource]='hostdata' [fields]='hostfields' [placeholder]='hosttext'></ejs-dropdownlist>
+                                            <br>
+                                            <ejs-dropdownlist id='ddlelement' #samples [dataSource]='priestData' [fields]='priestFields' [placeholder]='priestText'></ejs-dropdownlist>
+                                            <br>
+                                            <div class="e-float-input">
+                                                <textarea type="text" id="event" name="event"></textarea>
+                                                <span class="e-float-line"></span>
+                                                <label class="e-float-text" for="event">Say something about event</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div style="text-align: center">
+                                <button class='e-btn' id="Continue_Btn" (click)='btnClick()'>Next</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-accordionitem>
+                <e-accordionitem header='Priest Details - Booked date(s)'>
+                    <ng-template #content>
+                        <div id="Address_Fill" style="padding: 3px 0">
+                            <form id="formId_Address">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-6">
+                                        <ejs-calendar (renderDayCell)="onLoad($event)" (change)="onValueChange($event)" class='e-customStyle'></ejs-calendar>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div>
+                                            <div tabindex="0" class="e-card e-card-horizontal priestDetailsCard">
+                                                <!-- <img src="./assets/dist/img/avatar5.png" alt="Sample" style="height: 180px"> -->
+                                                <div class="e-card-stacked">
+                                                    <div class="e-card-header">
+                                                        <div class="e-card-header-caption">
+                                                            <div class="e-card-header-title">Priest Details</div>
+                                                        </div>
+                                                        <img src="./assets/profileImage/A3.jpg" width="50" height="50">
+                                                    </div>
+                                                    <div class="e-card-content priestDetailsCardContent">
+                                                        <div class="row col-sm-12 ">
+                                                            <label for="event">Name :Archaka. Thirumalai Krishnamacharya</label>
+                                                        </div>
+                                                        <div class="row col-sm-12">
+                                                            <label for="event">Address : 77 North Longfellow Lane, Fort Lauderdale, FL 33312</label>
+                                                        </div>
+                                                        <div class="row col-sm-12">
+                                                            <label for="event">Commuting Needed : Yes</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <br>
+                            <br>
+                            <div style="text-align: center">
+                                <button class='e-btn' id="Continue_BtnAdr" (click)='backClickTwo()'>Back</button> &nbsp;
+                                <button class='e-btn' id="Continue_BtnAdr" (click)='btnClickTwo()'>Next</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-accordionitem>
+                <e-accordionitem header='Other Options'>
+                    <ng-template #content>
+                        <div id="Address_Fill" style="padding: 3px 0">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4">
+                                    <label class="arrangeLabel">Will arrange commuting for priest</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment" value="Yes" label="Yes"></ejs-radiobutton>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment" value="No" label="No"></ejs-radiobutton>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-4">
+                                    <label class="purchaseLabel">Will Purchase Required materials myself</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment1" value="Yes" label="Yes"></ejs-radiobutton>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment1" value="No" label="No"></ejs-radiobutton>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-4">
+                                    <label class="makeLabel">Make Payment Now</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment2" value="Yes" label="Yes"></ejs-radiobutton>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ejs-radiobutton name="payment2" value="No" label="No"></ejs-radiobutton>
+                                </div>
+                            </div>
+
+                            <div style="text-align: center">
+                                <button class='e-btn' id="Back_Btn" (click)='secondBack()'>Back</button> &nbsp;
+                                <button class='e-btn' id="Back_Btn" (click)='Paymant()'>Payment</button>
+
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-accordionitem>
+                <e-accordionitem header='Card Details'>
+                    <ng-template #content>
+                        <div id="Card_Fill" style="padding: 3px 0;">
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <ejs-numerictextbox #cardNo format='0' placeholder='Card No' floatLabelType='Auto' [showSpinButton]=false></ejs-numerictextbox>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input type="text" id="cardHolder" name="cardHolder" required="" />
+                                        <span class="e-float-line"></span>
+                                        <label class="e-float-text" for="cardHolder">CardHolder Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <ejs-datepicker #date width='100%' format='MM/yyyy' placeholder='Expiry Date' floatLabelType='Auto'></ejs-datepicker>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <ejs-numerictextbox #cvv format='0' placeholder='CVV' floatLabelType='Auto' [showSpinButton]=false></ejs-numerictextbox>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <div id="cards">
+                                    <img src="../assets/images/visa.png" height="50" width="50">
+                                    <img src="../assets/images/mastercard.png" height="50" width="50">                                      
+                                </div>                                
+                                <ejs-checkbox label=" Pay $150.00 with credit card" cssClass="e-warning" [checked]="false"></ejs-checkbox>
+                               
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                <div id="cards">
+                                    <img src="../assets/images/paypal.png" height="50" width="50">
+                                </div>
+                                <ejs-checkbox label="Pay $150.00 with PayPal" cssClass="e-warning" [checked]="false"></ejs-checkbox>
+
+                            </div>
+                            <div style="text-align: center">
+                                <button class='e-btn' id="Back_Btn" (click)='payBackbtnClick()'>Back</button>&nbsp;
+                                <button class='e-btn' id="Save_Btn" 
+                                (click)="onPayDialog($event)">Pay</button>
+                                <div id="err3">* Please fill all fields</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-accordionitem>
+            </e-accordionitems>
+        </ejs-accordion>
+    </div>
+</section>

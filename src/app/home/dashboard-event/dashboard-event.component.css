@@ -1,0 +1,24 @@
+.chartSection{
+  content: "";
+  display: table;
+  clear: both;
+  background: #e1e5e9; 
+  padding: 20px 0px 0px 0px;
+}
+
+.dashboardSection{
+    content: "";
+    display: table;
+    clear: both;
+    background: #e1e5e9; 
+    padding: 20px 0px 0px 0px;
+}
+
+.e-card .e-card-header .e-card-header-caption .e-card-header-title{
+  font-size: 18px !important; 
+  font-weight: 800 !important;
+}
+/* 
+.e-card-content{
+  margin: 0px 0px 0px 0px !important;
+} */

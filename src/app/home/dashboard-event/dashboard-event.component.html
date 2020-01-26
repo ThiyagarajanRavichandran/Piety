@@ -1,0 +1,107 @@
+<section class="chartSection">
+    <div class="col-md-12">
+        <div class="col-md-8">
+                <div class="box box-danger">
+                        <div class="box-header">
+                            <i class="fa fa-comments-o"></i>
+                            <h3 class="box-title">Chart</h3>
+                        </div>
+            <ejs-chart [primaryXAxis]='pveXAxis' [primaryYAxis]='pveYAxis' [title]='pveChartTitle' [legendSettings]='pveChartLegend' [tooltip]='pveTooltipSettings'>
+                <e-series-collection>
+                    <e-series type='Line' [dataSource]='priestVsEventData' xName='priest' yName='events' name='Events' [marker]='pveMarkerSettings'></e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+        </div>
+        
+        <div class="col-md-4">
+            
+                        
+                <div class="box box-warning">
+                        <div class="box-header">
+                            <i class="fa fa-comments-o"></i>
+                            <h3 class="box-title">Monthly Financial Summary</h3>
+                             <img src="./assets/dist/img/finance.png" width="50" height="50" style="float: right;">
+                        </div>
+            <div tabindex="0" class="e-card e-card-horizontal">
+                <div class="e-card-stacked">
+                      <div class="e-card-content">
+                        <div class="row col-sm-12 ">
+                            <label for="event">Profit in hosting events : $3450</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Total Members : 27</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Members added this month : 12</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Budget : $2244</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Income : $334</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Expense : $556</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Deficit/Adjustments : $0</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="box box-warning">
+                        <div class="box-header">
+                            <i class="fa fa-comments-o"></i>
+                            <h3 class="box-title">Monthly Event Summary</h3>
+                            <img src="./assets/dist/img/hindu.png" width="50" height="50" style="float: right;">
+                        </div>
+            <div tabindex="0" class="e-card e-card-horizontal">
+                <div class="e-card-stacked">
+                
+                    <div class="e-card-content">
+                        <div class="row col-sm-12 ">
+                            <label for="event">Events hosted in temples : 23</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Household events : 12</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Public events : 3</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Bhoomi Pooja : 4</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Sashtiyaptha Poorthi : 7</label>
+                        </div>
+                        <div class="row col-sm-12">
+                            <label for="event">Pending for Approval : <a style="color:red;cursor: pointer;" (click)="showPendingEvents()">10 Event(s)</a></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    </div>
+</section>
+<section class="dashboardSection">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Upcoming events</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="box-body" id="chat-box">
+                        <ejs-schedule [eventSettings]="eventData" 
+                        [selectedDate]="currentDate" [currentView]="newViewMode"></ejs-schedule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+<section class="patronList2Section">
+    <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Manage Patrons</h3>
+                </div>
+            <ejs-grid [dataSource]='data' allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar'>
+                <e-columns>
+                    <!-- <e-column field='EventID' headerText='Event ID' width='60' textAlign='Right' isPrimaryKey='true' [validationRules]='eventidrules'></e-column> -->
+                    <e-column field='PatronName' headerText='Patron Name' isPrimaryKey='true' width='120' [validationRules]='guestidrules'></e-column>
+                    <e-column field='Age' headerText='Age' width='20' format='C2' textAlign='Right' editType='numericedit' [validationRules]='freightrules'></e-column>
+                    <!-- <e-column field='EventDate' headerText='Event Date' width='130' editType='datepickeredit' format='yMd' textAlign='Right'></e-column> -->
+                    <e-column field='Location' headerText='City' width='150' editType='dropdownedit' [edit]='editparams'></e-column>
+                </e-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</section>

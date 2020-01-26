@@ -1,0 +1,82 @@
+<section class="eventScheduleSection">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Event Schedule</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="box-body" id="chat-box">
+                        <ejs-schedule [eventSettings]="eventData" 
+                        [selectedDate]="currentDate" [currentView]="newViewMode" (click)="showClickedEvent()">
+                            <ng-template #editorTemplate let-data>
+                                <table class="custom-event-editor" width="100%" cell-padding="5" cell-spacing="3">
+                                    <tbody>
+                                        <tr>
+                                            <td class="e-textlabel">Summary</td>
+                                            <td colspan="4">
+                                                <input id="Subject" class="e-field e-input" type="text" value="{{data.HolyEvent}}" data-name="Subject" style="width:100%;"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="e-textlabel">Status</td>
+                                            <td colspan="4">
+                                                <ejs-dropdownlist id="Status" class="e-field" data-name="Status" placeholder="Choose Status"
+                                                    [dataSource]="StatusData" [fields]="statusFields" value="{{data.Status}}"></ejs-dropdownlist>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="e-textlabel">From</td>
+                                            <td colspan="4">
+                                                <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime" format="M/dd/yy h:mm a"
+                                                    [value]="data.EventStart"></ejs-datetimepicker>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="e-textlabel">To</td>
+                                            <td colspan="4">
+                                                <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                                                    [value]="data.EventEnd"></ejs-datetimepicker>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="e-textlabel">Priest Availability</td>
+                                        </tr>
+                                        <tr *ngFor="let priestVal of PriestAvailabilityData; let i = index;">
+                                            <td colspan="5" *ngIf="i==0">
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td bgColor="{{priestVal[0].ColorCode}}">&nbsp;</td>
+                                                        <td nowrap="true">&nbsp;{{priestVal[0].Name}}</td>
+                                                        <td bgColor="{{priestVal[1].ColorCode}}">&nbsp;</td>
+                                                        <td nowrap="true">&nbsp;{{priestVal[1].Name}}</td>
+                                                        <td bgColor="{{priestVal[2].ColorCode}}">&nbsp;</td>
+                                                        <td nowrap="true">&nbsp;{{priestVal[2].Name}}</td>
+                                                        <td bgColor="{{priestVal[3].ColorCode}}">&nbsp;</td>
+                                                        <td nowrap="true">&nbsp;{{priestVal[3].Name}}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                
+<!-- 
+                                        <tr>
+                                            <td class="e-textlabel">Reason</td>
+                                            <td colspan="4">
+                                                <textarea id="Description" class="e-field e-input" data-name="Description"
+                                                  rows="3" cols="50" value="{{data.HolyEvent}}" 
+                                                  style="width:100%; height:60px !important; resize : vertical"></textarea>
+                                            </td>
+                                        </tr>
+ -->
+                                    </tbody>
+                                </table>
+                            </ng-template>
+                        </ejs-schedule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
